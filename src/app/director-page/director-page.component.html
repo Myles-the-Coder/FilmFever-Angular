@@ -1,0 +1,12 @@
+
+<mat-card style="display: grid; place-items: center;">
+  <button mat-button (click)="closeDialog()" style="position: absolute; top: 0; right: 0;">X</button>
+  <mat-card-header>
+    <mat-card-title>{{data.Name}}</mat-card-title>
+    <mat-card-subtitle>Born: {{data.Birthdate | date}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="data.Deathdate">Died: {{data.Deathdate | date}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{data.Bio}}</p>
+  </mat-card-content>
+</mat-card>

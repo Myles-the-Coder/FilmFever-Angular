@@ -12,7 +12,7 @@ const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
 
 @Injectable({ providedIn: 'root' })
-export class UserRegistrationService {
+export class FetchApiDataService {
   constructor(private http: HttpClient) {}
 
   public userRegistration(userDetails: any): Observable<any> {
@@ -50,26 +50,25 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  getSingleMovie(): Observable<any> {
+  getSingleMovie(movieId: string): Observable<any> {
     return this.http
-      .get(`${apiUrl}movies/:MovieId`, {
+      .get(`${apiUrl}movies/${movieId}`, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  getDirector(): Observable<any> {
+  getDirector(name: string): Observable<any> {
     return this.http
-      .get(`${apiUrl}directors/:Name`, {
+      .get(`${apiUrl}directors/${name}`, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  getGenre(): Observable<any> {
-    const token = localStorage.getItem('token');
+  getGenre(name: string): Observable<any> {
     return this.http
-      .get(`${apiUrl}genres/:Name`, {
+      .get(`${apiUrl}genres/${name}`, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
