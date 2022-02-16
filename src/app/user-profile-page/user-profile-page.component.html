@@ -1,0 +1,13 @@
+<app-header></app-header>
+<mat-card>
+  <mat-card-title>Your Profile Info</mat-card-title>
+  <mat-card-content>
+    <mat-card-subtitle>Username: {{currentUser?.Username}}</mat-card-subtitle>
+    <mat-card-subtitle>Email: {{currentUser?.Email}}</mat-card-subtitle>
+    <mat-card-subtitle>Birthday: {{currentUser?.Birthday | date}}</mat-card-subtitle>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="openUpdateDialog()">Update Information</button>
+    <button mat-raised-button (click)="openDeleteDialog()">Delete Account</button>
+  </mat-card-actions>
+</mat-card>

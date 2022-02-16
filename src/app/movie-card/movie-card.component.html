@@ -1,9 +1,4 @@
-<mat-toolbar color="primary">
-  <span>User Management</span>
-   <a mat-button>Home</a>
-   <a mat-button>About</a>
-   <a mat-button>Contact</a>
- </mat-toolbar>
+<app-header></app-header>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1rem;">
   <mat-card *ngFor="let movie of movies; let i = index" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
     <mat-card-header>
@@ -18,14 +13,11 @@
         <button mat-button color="primary" (click)="getMovieGenre(movie.Genre.Name)">Genre</button>
         <button mat-button color="primary" (click)="getMovieDirector(movie.Director.Name)">Director</button>
         <button mat-button color="primary" (click)="getMovieSynopsis(movie._id)">Synopsis</button>
-        <button (click)="addToFavorites(movie._id)" style="background-color: transparent; border: none;" matTooltip="Add to favorites" aria-label="Button that adds movie to favorites list">
-          <mat-icon class="favorite">favorite_border</mat-icon>
-          <!-- <ng-template>
-            <mat-icon *ngIf="{{movie.Featured}}" class="favorite">favorite</mat-icon>
-          </ng-template> -->
-        </button>
+          <mat-icon *ngIf="favCheck(movie._id); else notInFavorites"class="favorite"  (click)="toggleFavoriteMovies(movie._id, movie.Title)" matTooltip="Remove from favorites" aria-label="Button that removes movie to favorites list">favorite</mat-icon>
+          <ng-template #notInFavorites>
+            <mat-icon class="favorite" (click)="toggleFavoriteMovies(movie._id, movie.Title)" matTooltip="Add to favorites" aria-label="Button that adds movie to favorites list">favorite_border</mat-icon>
+          </ng-template>
       </mat-card-actions>
     </mat-dialog-content>
-    <p>{{movie.Featured}}</p>
   </mat-card>
 </div>

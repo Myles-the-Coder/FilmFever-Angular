@@ -22,10 +22,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { GenrePageComponent } from './genre-page/genre-page.component';
 import { DirectorPageComponent } from './director-page/director-page.component';
 import { SynopsisPageComponent } from './synopsis-page/synopsis-page.component';
-
+import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { UpdateInfoFormComponent } from './update-info-form/update-info-form.component';
+import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { HeaderComponent } from './header/header.component';
+import { DataService } from './data-service/data-service';
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomePageComponent},
   {path: 'movies', component: MovieCardComponent},
+  {path: 'profile', component: UserProfilePageComponent},
   {path: '', redirectTo: 'welcome', pathMatch: 'prefix'}
 ]
 
@@ -38,7 +43,11 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     GenrePageComponent,
     DirectorPageComponent,
-    SynopsisPageComponent
+    SynopsisPageComponent,
+    UserProfilePageComponent,
+    UpdateInfoFormComponent,
+    DeleteUserDialogComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +66,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
