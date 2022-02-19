@@ -20,3 +20,17 @@
 		background-position: 0% 50%;
 	}
 }
+
+.btn {
+  width: 300px;
+  padding: 1rem;
+  font-size: 1.1rem;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

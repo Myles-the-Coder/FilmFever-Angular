@@ -27,6 +27,7 @@ import { UpdateInfoFormComponent } from './update-info-form/update-info-form.com
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 import { HeaderComponent } from './header/header.component';
 import { DataService } from './data-service/data-service';
+import { MovieListComponent } from './movie-list/movie-list.component';
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomePageComponent},
   {path: 'movies', component: MovieCardComponent},
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     UpdateInfoFormComponent,
     DeleteUserDialogComponent,
     HeaderComponent,
+    MovieListComponent,
   ],
   imports: [
     BrowserModule,

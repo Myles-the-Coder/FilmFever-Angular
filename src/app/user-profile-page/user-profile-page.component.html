@@ -1,13 +1,15 @@
 <app-header></app-header>
-<mat-card>
+<mat-card style="display: grid; place-items: center; margin: 1rem;">
   <mat-card-title>Your Profile Info</mat-card-title>
-  <mat-card-content>
-    <mat-card-subtitle>Username: {{currentUser?.Username}}</mat-card-subtitle>
-    <mat-card-subtitle>Email: {{currentUser?.Email}}</mat-card-subtitle>
-    <mat-card-subtitle>Birthday: {{currentUser?.Birthday | date}}</mat-card-subtitle>
+  <mat-card-content style="margin: 1rem; text-align: center;">
+    <mat-card-subtitle style="font-size: 1rem;">Username: {{currentUser?.Username}}</mat-card-subtitle>
+    <mat-card-subtitle style="font-size: 1rem;">Email: {{currentUser?.Email}}</mat-card-subtitle>
+    <mat-card-subtitle style="font-size: 1rem;">Birthday: {{currentUser?.Birthday | date}}</mat-card-subtitle>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="openUpdateDialog()">Update Information</button>
     <button mat-raised-button (click)="openDeleteDialog()">Delete Account</button>
   </mat-card-actions>
 </mat-card>
+<h1 style="text-align: center; margin: 1rem;">Your Favorite Movies</h1>
+<app-movie-list [movies]="filteredFavs"></app-movie-list>

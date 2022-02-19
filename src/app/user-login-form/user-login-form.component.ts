@@ -24,16 +24,12 @@ export class UserLoginFormComponent implements OnInit {
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe(
       res => {
-        this.dialogRef.close();
         const {token, user} = res
+        this.dialogRef.close();
         localStorage.setItem('token', token)
         localStorage.setItem('user', user.Username)
         this.router.navigate(['movies'])
-        this.snackBar.open(res, 'OK', { duration: 2000 });
       },
-      res => {
-        this.snackBar.open(res, 'OK', { duration: 2000 });
-      }
-    );
+      );
   }
 }

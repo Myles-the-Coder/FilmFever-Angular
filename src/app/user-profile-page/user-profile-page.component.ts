@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DataService } from '../data-service/data-service';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { UpdateInfoFormComponent } from '../update-info-form/update-info-form.component';
@@ -12,15 +11,34 @@ import { UpdateInfoFormComponent } from '../update-info-form/update-info-form.co
 })
 export class UserProfilePageComponent implements OnInit {
   currentUser: any = {};
-  constructor(private dataService: DataService, 
+  filteredFavs: any[] = []
+  constructor( 
     public dialog: MatDialog,
     public fetchApiData: FetchApiDataService) {}
 
   ngOnInit(): void {
+    this.returnUser()
+    this.getFavoriteMovies()
+  }
+
+  returnUser(): void {
     const user = localStorage.getItem('user')
     this.fetchApiData.getUserProfile(user).subscribe((res: any) => {
       this.currentUser = res
+      return this.currentUser
     })
+  }
+
+  getFavoriteMovies(): void {
+    this.fetchApiData.getAllMovies().subscribe((res: any) => {
+      res.forEach((movie: any) => {
+        if (this.currentUser.FavoriteMovies.includes(movie._id)) {
+          this.filteredFavs.push(movie)
+        }
+      })
+      console.log(this.filteredFavs)
+      return this.filteredFavs
+      });
   }
 
   openUpdateDialog(): void {

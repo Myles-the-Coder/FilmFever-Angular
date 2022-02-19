@@ -1,6 +1,6 @@
-<mat-toolbar color="primary" style="display: flex;">
+<mat-toolbar style="display: flex; background-color: skyblue;">
   <span style="flex: 1;">FilmFever</span>
-    <a mat-button (click)="logOut()">Log out</a>
-    <a mat-button routerLink="/profile">Profile</a>
-    <a mat-button routerLink="/movies">Movies</a>
+    <a mat-button (click)="logOut()" class="nav-link">Log out</a>
+    <a mat-button routerLink="/profile" class="nav-link">Profile</a>
+    <a mat-button routerLink="/movies" class="nav-link">Movies</a>
  </mat-toolbar>

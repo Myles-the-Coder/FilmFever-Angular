@@ -23,11 +23,7 @@ export class UserRegistrationFormComponent implements OnInit {
 
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(res => {
-      const {token, user} = res
       this.dialogRef.close()
-      localStorage.setItem('token', token)
-      localStorage.setItem('user', user.Username)
-      this.router.navigate(['movies'])
       this.snackBar.open(res, 'OK', {
         duration: 2000
       })

@@ -1,1 +1,8 @@
-<p>delete-user-dialog works!</p>
+<mat-card>
+  <mat-card-title>Warning!</mat-card-title>
+  <mat-card-subtitle>This action with permanetly delete your account. Do you wish to contine?</mat-card-subtitle>
+  <mat-card-actions>
+    <button mat-raised-button style="background-color: red; color: whitesmoke;" (click)="deleteAccount()">Delete Account</button>
+    <button mat-raised-button (click)="closeDialog()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
