@@ -12,21 +12,20 @@ import { UpdateInfoFormComponent } from '../update-info-form/update-info-form.co
 export class UserProfilePageComponent implements OnInit {
   currentUser: any = {};
   filteredFavs: any[] = []
-  userAccess= localStorage.getItem('user')
-  userToken= localStorage.getItem('token')
-  constructor( 
+    constructor( 
     public dialog: MatDialog,
     public fetchApiData: FetchApiDataService) {}
 
   ngOnInit(): void {
       this.returnUser()
-      if (this.userAccess) {
+      setTimeout(() => {
         this.getFavoriteMovies()
-      }
+      }, 1000);
     }
 
   returnUser(): void {
-    this.fetchApiData.getUserProfile(this.userAccess).subscribe((res: any) => {
+    const user = localStorage.getItem('user')
+    this.fetchApiData.getUserProfile(user).subscribe((res: any) => {
       this.currentUser = res
       return this.currentUser
     })
