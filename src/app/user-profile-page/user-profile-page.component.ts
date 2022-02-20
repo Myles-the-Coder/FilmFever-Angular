@@ -12,18 +12,21 @@ import { UpdateInfoFormComponent } from '../update-info-form/update-info-form.co
 export class UserProfilePageComponent implements OnInit {
   currentUser: any = {};
   filteredFavs: any[] = []
+  userAccess= localStorage.getItem('user')
+  userToken= localStorage.getItem('token')
   constructor( 
     public dialog: MatDialog,
     public fetchApiData: FetchApiDataService) {}
 
   ngOnInit(): void {
-    this.returnUser()
-    this.getFavoriteMovies()
-  }
+      this.returnUser()
+      if (this.userAccess) {
+        this.getFavoriteMovies()
+      }
+    }
 
   returnUser(): void {
-    const user = localStorage.getItem('user')
-    this.fetchApiData.getUserProfile(user).subscribe((res: any) => {
+    this.fetchApiData.getUserProfile(this.userAccess).subscribe((res: any) => {
       this.currentUser = res
       return this.currentUser
     })
@@ -36,7 +39,6 @@ export class UserProfilePageComponent implements OnInit {
           this.filteredFavs.push(movie)
         }
       })
-      console.log(this.filteredFavs)
       return this.filteredFavs
       });
   }

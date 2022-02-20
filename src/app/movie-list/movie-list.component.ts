@@ -17,6 +17,8 @@ export class MovieListComponent implements OnInit {
   currentUser: any = null;
   favoriteMovies: any = [];
   isInFavorites: boolean = false;
+  userAccess = localStorage.getItem('user');
+  userToken = localStorage.getItem('token')
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -24,12 +26,13 @@ export class MovieListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCurrentUser()
+    if (this.userToken) {
+      this.getCurrentUser()
+    }
   }
 
   getCurrentUser(): void {
-    const user = localStorage.getItem('user');
-    this.fetchApiData.getUserProfile(user).subscribe((res: any) => {
+    this.fetchApiData.getUserProfile(this.userAccess).subscribe((res: any) => {
       this.currentUser = res;
       this.favoriteMovies = res.FavoriteMovies;
       return this.currentUser, this.favoriteMovies;

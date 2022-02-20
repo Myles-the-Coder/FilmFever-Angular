@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -13,20 +12,27 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $FilmFever-Angular-client-primary: mat.define-palette(mat.$indigo-palette);
-$FilmFever-Angular-client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$FilmFever-Angular-client-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
 
 // The warn palette is optional (defaults to red).
 $FilmFever-Angular-client-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$FilmFever-Angular-client-theme: mat.define-light-theme((
-  color: (
-    primary: $FilmFever-Angular-client-primary,
-    accent: $FilmFever-Angular-client-accent,
-    warn: $FilmFever-Angular-client-warn,
+$FilmFever-Angular-client-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $FilmFever-Angular-client-primary,
+      accent: $FilmFever-Angular-client-accent,
+      warn: $FilmFever-Angular-client-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,5 +41,35 @@ $FilmFever-Angular-client-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// html,
+// body {
+//   height: 100%;
+// }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #7f7fd5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #91eae4,
+    #86a8e7,
+    #7f7fd5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.btn-action {
+  &:hover {
+    filter: brightness(110%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

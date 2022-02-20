@@ -9,9 +9,8 @@ import { Router } from '@angular/router';
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss'],
 })
-
 export class UserLoginFormComponent implements OnInit {
-  @Input() userCredentials = {Username: '', Password: ''};
+  @Input() userCredentials = { Username: '', Password: '' };
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -22,14 +21,15 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {}
 
   loginUser(): void {
-    this.fetchApiData.userLogin(this.userCredentials).subscribe(
-      res => {
-        const {token, user} = res
-        this.dialogRef.close();
-        localStorage.setItem('token', token)
-        localStorage.setItem('user', user.Username)
+    this.fetchApiData.userLogin(this.userCredentials).subscribe((res) => {
+      const { token, user } = res;
+      this.dialogRef.close();
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', user.Username);
+      if(localStorage.getItem('token')) {
         this.router.navigate(['movies'])
-      },
-      );
+      }
+    });
+
   }
 }

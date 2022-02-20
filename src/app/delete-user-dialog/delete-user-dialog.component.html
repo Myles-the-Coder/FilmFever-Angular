@@ -1,8 +1,9 @@
-<mat-card>
-  <mat-card-title>Warning!</mat-card-title>
-  <mat-card-subtitle>This action with permanetly delete your account. Do you wish to contine?</mat-card-subtitle>
+<mat-card style="display: grid; place-items: center; text-align: center;">
+  <mat-card-title style="margin-bottom: 1rem;">Warning!</mat-card-title>
+  <mat-card-subtitle style="font-size: 1rem;">This action with permanently delete your account.</mat-card-subtitle>
+  <mat-card-subtitle style="font-size: 1rem;">Do you wish to continue?</mat-card-subtitle>
   <mat-card-actions>
-    <button mat-raised-button style="background-color: red; color: whitesmoke;" (click)="deleteAccount()">Delete Account</button>
-    <button mat-raised-button (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button style="background-color: red; color: #fff;" (click)="deleteAccount()" class="btn-action">Delete Account</button>
+    <button mat-raised-button (click)="closeDialog()" class="btn-action">Cancel</button>
   </mat-card-actions>
 </mat-card>
