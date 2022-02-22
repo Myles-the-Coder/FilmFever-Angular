@@ -12,6 +12,9 @@ export class WelcomePageComponent implements OnInit {
 
   constructor( public dialog: MatDialog, public router: Router) { }
 
+  /**
+   * Navigates to 'movies' page if user credentials are saved in local storage
+   */
   ngOnInit(): void {
     const userAccess = localStorage.getItem('user')
     const userToken = localStorage.getItem('token')
@@ -21,12 +24,17 @@ export class WelcomePageComponent implements OnInit {
       return
     }
   }
-
+  /**
+   * Opens Registration form
+   */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       width: '500px'
     })
   }
+    /**
+   * Opens Login form
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '500px'

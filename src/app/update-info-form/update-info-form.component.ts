@@ -25,7 +25,9 @@ export class UpdateInfoFormComponent implements OnInit {
       this.user = res
     })
   }
-
+/**
+ * This function updates the user information with data provided from the HTML form
+ */
   updateUser(): void {
     this.fetchApiData.editUserProfile(this.username, this.userData).subscribe((res: any) => {
       this.dialogRef.close()

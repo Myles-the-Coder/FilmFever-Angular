@@ -20,6 +20,9 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * This function logins in user and sets credentials to local storage
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe((res) => {
       const { token, user } = res;

@@ -21,7 +21,9 @@ export class UserRegistrationFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
+/**
+ * This function registers a new user account with information from the HTML form
+ */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (res: any) => {

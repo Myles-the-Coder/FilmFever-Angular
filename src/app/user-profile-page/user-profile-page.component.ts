@@ -22,7 +22,10 @@ export class UserProfilePageComponent implements OnInit {
         this.getFavoriteMovies()
       }, 1000);
     }
-
+/**
+ * This function fetches user information from API
+ * @returns current user
+ */
   returnUser(): void {
     const user = localStorage.getItem('user')
     this.fetchApiData.getUserProfile(user).subscribe((res: any) => {
@@ -30,7 +33,12 @@ export class UserProfilePageComponent implements OnInit {
       return this.currentUser
     })
   }
-
+/**
+ * This function fetches all movies from API
+ * The movies array is filtered to only show movies in the user's favorites list
+ * These movies are pushed to the filteredFavs array
+ * @returns favorite movies filtered from all movies
+ */
   getFavoriteMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       res.forEach((movie: any) => {

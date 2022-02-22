@@ -23,7 +23,10 @@ export class MovieCardComponent implements OnInit {
   ngOnInit(): void {
     this.getMovies();
   }
-
+/**
+ * This function fetches all movies from API
+ * @returns All movies
+ */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       this.movies = res;

@@ -20,7 +20,12 @@ export class DeleteUserDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/**
+ * This function serves three purposes
+ * 1) Delete user account from database
+ * 2) Remove information from local storage
+ * 3) Redirect back to welcome screen
+ */
   deleteAccount(): void {
     const user = localStorage.getItem('user')
     this.fetchApiData.deleteUserProfile(user).subscribe((res: any) => {
@@ -29,8 +34,8 @@ export class DeleteUserDialogComponent implements OnInit {
       })
     })
     this.dialogRef.close()
-     localStorage.clear()
-     this.router.navigate(['/'])
+    localStorage.clear()
+    this.router.navigate(['/'])
   }
 
   closeDialog(): void {this.dialogRef.close()}
